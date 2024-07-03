@@ -1,1 +1,12 @@
-does some trolling and shit and yeah
+- change random non system filenames
+- change wallpaper
+- change keyboard layout
+- changing volume
+- kill random non system processes
+- opening random websites
+- press random keys
+- disconnecting and reconnecting usb and hdmi devices randomly
+- changing themes
+- changing font
+- autostart on startup
+- hyper realistic knocking sound every 3 minutes
